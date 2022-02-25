@@ -23,7 +23,8 @@ export class GameComponent implements OnInit {
   ) { 
    // this.openDialog();
   }
-//http://jogovelhagfavarelli.azurewebsites.net/chat
+//https://velhagfavarelli.azurewebsites.net/chat
+//https://localhost:5001/chat
   connection = new signalr.HubConnectionBuilder()
   .withUrl("https://velhagfavarelli.azurewebsites.net/chat")
   .build();
@@ -34,6 +35,7 @@ export class GameComponent implements OnInit {
   gameOption: OpcaoJogador;
   enableMessageLoading: boolean = false;
   enableMessageFriendConnect: boolean = false;
+  jogadorVencedor: string = '';
 
   ngOnInit(): void {    
     this.gameOption = this.gameOptionService.getOpcaoJogador();
@@ -42,7 +44,7 @@ export class GameComponent implements OnInit {
 
     this.activateRoute.paramMap.subscribe(params => {
       this.gameId = params.get("gameId");
-      this.jogadorNumero = params.get("jogadorNumero");
+      this.jogadorNumero = this.gameOption.tipoJogador ? this.gameOption.tipoJogador : 'jogador2';
       this.startConnection();
     });
   }
@@ -65,17 +67,27 @@ export class GameComponent implements OnInit {
       }
 
       if (jogada[3]) {
-        alert(`Jogador ${jogada[3]} venceu !!!`);
+        this.jogadorVencedor = jogada[3].toUpperCase();
       }
       
       this.ref.detectChanges();
     });
 
     this.connection.on("getgroup", (data: any) => {
-      console.log(data.length < 2);
       this.enableMessageFriendConnect = data.length < 2;
       this.ref.detectChanges();
     });
+
+    this.connection.on('reiniciarjogo' , (data: any) => {
+      console.log(data);
+      this.casa = [];
+      this.jogadorVencedor = '';
+      this.ref.detectChanges();
+    });
+  }
+
+  reiniciarJogo() {
+    this.connection.send('reiniciarjogo', this.gameId).then();
   }
 
   jogar(casa: number) {

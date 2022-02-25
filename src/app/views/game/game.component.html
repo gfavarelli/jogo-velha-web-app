@@ -2,9 +2,13 @@
 
     <div class="container">
         <div class="alert alert-success" role="alert">
+            <p>{{jogadorNumero}}</p>
             <h1>{{gameId}}</h1>
-            <p *ngIf="enableMessageLoading">Aguarde seu oponente Jogar...</p>
-            <p *ngIf="enableMessageFriendConnect">Aguarde seu amigo entrar na sala...</p>
+           
+            <p *ngIf="enableMessageLoading && !jogadorVencedor">Aguarde seu oponente Jogar...</p>
+            <p *ngIf="enableMessageFriendConnect && !jogadorVencedor">Aguarde seu amigo entrar na sala...</p>
+            <p *ngIf="jogadorVencedor" class="jogador-vencedor">***{{jogadorVencedor}}*** venceu :)</p>
+            <p *ngIf="jogadorVencedor" (click)="reiniciarJogo()" class="reiniciar-jogo">Reiniciar Jogo</p>
         </div>
         <div class="row">
             <div class="col" (click)="jogar(0)">
@@ -42,22 +46,3 @@
     </div>
 </div>
 
-
-
-<!-- <div id="jogo">
-    <div class="linha">
-        <div class="casa" (click)="jogar(0)" id="casa1">{{casa[0]}}</div>
-        <div class="casa" (click)="jogar(1)" id="casa2">{{casa[1]}}</div>
-        <div class="casa" (click)="jogar(2)" id="casa3">{{casa[2]}}</div>
-    </div>
-    <div class="linha">
-        <div class="casa" (click)="jogar(3)" id="casa4">{{casa[3]}}</div>
-        <div class="casa" (click)="jogar(4)" id="casa5">{{casa[4]}}</div>
-        <div class="casa" (click)="jogar(5)" id="casa6">{{casa[5]}}</div>
-    </div>
-    <div class="linha">
-        <div class="casa" (click)="jogar(6)" id="casa7">{{casa[6]}}</div>
-        <div class="casa" (click)="jogar(7)" id="casa8">{{casa[7]}}</div>
-        <div class="casa" (click)="jogar(8)" id="casa9">{{casa[8]}}</div>
-    </div>
-</div> -->
