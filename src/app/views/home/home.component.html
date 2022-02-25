@@ -1,0 +1,37 @@
+<div class="jumbotron vertical-center">
+    <div class="container">
+        <div class="text-center row-title">
+            <p>Jogo da Velha </p>
+        </div>
+        <div class="text-center row-img">
+            <img src="./../../../assets/img/jogo-velha.png" class="img-fluid" alt="...">
+        </div>
+
+        <div class="row-code-game">
+            <div class="alert alert-success" role="alert">
+                Insira o código para entrar na sala
+            </div>
+
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" [(ngModel)]="gameIdInput" class="form-control" placeholder="jogue com seu amigo ;)" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm">
+            </div>
+        </div>
+
+        <div class="alert alert-primary" role="alert">
+            Ou escolha uma opção para iniciar o jogo =)
+        </div>
+
+        <div class="row">
+            <div class="col" [ngClass]="{'selecionado':opcaoSelecionadaX}" (click)="selecionarOpcao('X')">
+                <p>X</p>
+            </div>
+            <div class="col" [ngClass]="{'selecionado':opcaoSelecionadaO}" (click)="selecionarOpcao('O')">
+                <p>O</p>
+            </div>
+        </div>
+        <div class="row row-button">
+            <button (click)="navigateToGate()" type="button" class="btn btn-success">Começar o jogo</button>
+        </div>
+    </div>
+</div>

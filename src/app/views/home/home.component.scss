@@ -1,0 +1,76 @@
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .col {
+      background-color: lightgray;
+      text-align: center;
+
+      p {
+        font-family: 'Irish Grover', cursive;
+        margin-top: 15px;
+        font-size: 50px;
+      }
+  }
+
+  .col:hover {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+  }
+
+  .selecionado {
+    background-color: black;
+    color: white;
+  }
+
+  .row-button { 
+      margin-top: 20px;
+  }
+
+  .row-img {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      img {
+        width: 100px;
+        
+      }
+   
+  }
+  .row-title {
+      p {
+          font-family: 'Irish Grover', cursive;
+          font-size: 50px;
+      }
+  }
+
+  .alert {
+    font-family: 'Irish Grover', cursive;
+    font-size: 20px;
+    text-align: center;
+  }
+
+input[type="text"] {
+    font-family: 'Irish Grover', cursive;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+button {
+    font-family: 'Irish Grover', cursive;
+    font-size: 30px; 
+}
+
+.row-code-game {
+    background: black;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}

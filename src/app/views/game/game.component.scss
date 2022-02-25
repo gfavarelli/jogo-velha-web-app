@@ -1,0 +1,46 @@
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+.row {
+    border: solid 1px black;
+    height: 140px;
+    border-radius: 10px;
+    border-style: dashed;
+    .col {
+        text-align: center;
+        
+        p {
+            font-family: 'Irish Grover', cursive;
+            font-size: 50px;
+            margin-top: 50px;
+        }
+    }
+
+    .separator { 
+        border-right: solid 1px black;
+        border-left: solid 1px black;        
+    }
+}
+
+.alert {
+    text-align: center;
+    
+    h1, p {
+        font-family: 'Irish Grover', cursive;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 20px;
+        color: black;
+    }
+}
