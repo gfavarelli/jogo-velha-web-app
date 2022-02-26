@@ -4,45 +4,62 @@
         <div class="alert alert-success" role="alert">
             <p>{{jogadorNumero}}</p>
             <h1>{{gameId}}</h1>
-           
+
             <p *ngIf="enableMessageLoading && !jogadorVencedor">Aguarde seu oponente Jogar...</p>
             <p *ngIf="enableMessageFriendConnect && !jogadorVencedor">Aguarde seu amigo entrar na sala...</p>
-            <p *ngIf="jogadorVencedor" class="jogador-vencedor">***{{jogadorVencedor}}*** venceu :)</p>
+            <p *ngIf="jogadorVencedor" class="jogador-vencedor">{{jogadorVencedor}}</p>
             <p *ngIf="jogadorVencedor" (click)="reiniciarJogo()" class="reiniciar-jogo">Reiniciar Jogo</p>
         </div>
-        <div class="row">
-            <div class="col" (click)="jogar(0)">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr class="bg-success">
+                        <th class="text-center" scope="col">Jogador 1</th>
+                        <th class="text-center" scope="col">Jogador 2</th>
+                        <th class="text-center" scope="col">Deu Velha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{rankingJogadores[0]}}</td>
+                        <td class="text-center">{{rankingJogadores[1]}}</td>
+                        <td class="text-center">{{rankingJogadores[2]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row border-bottom-none border-top-none border-left-none border-right-none">
+            <div class="col" [ngClass]="{'col-x': casa[0] === 'X', 'col-o' : casa[0] === 'O' }" (click)="jogar(0)">
                 <p>{{casa[0]}}</p>
             </div>
-            <div class="col separator" (click)="jogar(1)">
+            <div class="col separator" [ngClass]="{'col-x': casa[1] === 'X', 'col-o' : casa[1] === 'O' }" (click)="jogar(1)">
                 <p>{{casa[1]}}</p>
             </div>
-            <div class="col" (click)="jogar(2)">
+            <div class="col" [ngClass]="{'col-x': casa[2] === 'X', 'col-o' : casa[2] === 'O' }" (click)="jogar(2)">
                 <p>{{casa[2]}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col" (click)="jogar(3)">
+        <div class="row border-bottom-none border-left-none border-right-none">
+            <div class="col" [ngClass]="{'col-x': casa[3] === 'X', 'col-o' : casa[3] === 'O' }" (click)="jogar(3)">
                 <p>{{casa[3]}}</p>
             </div>
-            <div class="col separator" (click)="jogar(4)">
+            <div class="col separator" [ngClass]="{'col-x': casa[4] === 'X', 'col-o' : casa[4] === 'O' }" (click)="jogar(4)">
                 <p>{{casa[4]}}</p>
             </div>
-            <div class="col" (click)="jogar(5)">
+            <div class="col" [ngClass]="{'col-x': casa[5] === 'X', 'col-o' : casa[5] === 'O' }" (click)="jogar(5)">
                 <p>{{casa[5]}}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col" (click)="jogar(6)">
+        <div class="row border-left-none border-right-none border-bottom-none">
+            <div class="col" [ngClass]="{'col-x': casa[6] === 'X', 'col-o' : casa[6] === 'O' }" (click)="jogar(6)">
                 <p>{{casa[6]}}</p>
             </div>
-            <div class="col separator" (click)="jogar(7)">
+            <div class="col separator" [ngClass]="{'col-x': casa[7] === 'X', 'col-o' : casa[7] === 'O' }" (click)="jogar(7)">
                 <p>{{casa[7]}}</p>
             </div>
-            <div class="col" (click)="jogar(8)">
+            <div class="col" [ngClass]="{'col-x': casa[8] === 'X', 'col-o' : casa[8] === 'O' }" (click)="jogar(8)">
                 <p>{{casa[8]}}</p>
             </div>
         </div>
     </div>
 </div>
-

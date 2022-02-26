@@ -37,7 +37,9 @@ export class GameComponent implements OnInit {
   enableMessageFriendConnect: boolean = false;
   jogadorVencedor: string = '';
 
-  ngOnInit(): void {    
+  rankingJogadores: any[] = [0,0,0];
+
+  ngOnInit(): void {  
     this.gameOption = this.gameOptionService.getOpcaoJogador();
     this.enableMessageLoading = this.gameOption.tipoJogador === "jogador2";
     this.opcaoJogador =  this.gameOption.opcao;
@@ -67,7 +69,15 @@ export class GameComponent implements OnInit {
       }
 
       if (jogada[3]) {
-        this.jogadorVencedor = jogada[3].toUpperCase();
+        this.setRanking(jogada[3]);
+
+        if(jogada[3] === 'empate') {
+          this.jogadorVencedor = 'Deu velha :(';
+          this.ref.detectChanges();
+          return;
+        }
+
+        this.jogadorVencedor = `***${jogada[3].toUpperCase()}*** venceu :)`;
       }
       
       this.ref.detectChanges();
@@ -79,11 +89,24 @@ export class GameComponent implements OnInit {
     });
 
     this.connection.on('reiniciarjogo' , (data: any) => {
-      console.log(data);
       this.casa = [];
       this.jogadorVencedor = '';
       this.ref.detectChanges();
     });
+  }
+
+  setRanking(jogador: string) {
+    switch(jogador) {
+      case 'empate':
+        this.rankingJogadores[2] = this.rankingJogadores[2] + 1;
+        break;
+      case 'jogador1':
+        this.rankingJogadores[0] = this.rankingJogadores[0] + 1;
+        break;
+      case 'jogador2': 
+        this.rankingJogadores[1] = this.rankingJogadores[1] + 1;
+        break;
+    }
   }
 
   reiniciarJogo() {

@@ -8,10 +8,9 @@
   }
 
 .row {
-    border: solid 1px black;
+    border: solid 3px black;
     height: 140px;
-    border-radius: 10px;
-    border-style: dashed;
+
     .col {
         text-align: center;
         
@@ -23,8 +22,8 @@
     }
 
     .separator { 
-        border-right: solid 1px black;
-        border-left: solid 1px black;        
+        border-right: solid 3px black;
+        border-left: solid 3px black;        
     }
 }
 
@@ -54,4 +53,39 @@
     text-decoration: underline !important;
     color: blue !important;
     font-size: 25px !important;
+}
+
+.col-x {
+    background-color: #04DAFA;
+    color: white;
+}
+
+.col-o {
+    background-color: #D599F9;
+    color: white;
+}
+
+.border-bottom-none {
+    border-bottom: none;
+}
+
+.border-top-none {
+    border-top: none;
+}
+
+.border-left-none {
+    border-left: none;
+}
+
+.border-right-none {
+    border-right: none;
+}
+
+.text-center {
+    font-family: 'Irish Grover', cursive;
+    font-size: 20px;
+}
+
+.bg-success {
+    color: #FFFFFF;
 }
