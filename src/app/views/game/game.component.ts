@@ -114,7 +114,7 @@ export class GameComponent implements OnInit {
   }
 
   jogar(casa: number) {
-    if (!this.enableMessageLoading && !this.enableMessageFriendConnect) {
+    if (!this.enableMessageLoading && !this.enableMessageFriendConnect && !this.jogadorVencedor) {
       this.enableMessageLoading = true;
       this.connection.send("jogada", this.gameId, this.gameOption.tipoJogador, casa).then();
     }
